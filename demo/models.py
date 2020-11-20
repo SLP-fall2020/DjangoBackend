@@ -9,4 +9,11 @@ class Course(models.Model):
     def __str__(self):
         return self.className
 
-#class Note(models.Model):
+class Note(models.Model):
+    title = models.CharField(max_length=32, blank=False)
+    date = models.DateTimeField()
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    content = models.TextField()
+
+    def __str__(self):
+        return self.title
